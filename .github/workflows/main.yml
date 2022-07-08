@@ -44,7 +44,7 @@ jobs:
     - name: Generate images
       run: |
         python3 --version
-        python3 generate_images.py
+        python3 generate_images.py > /dev/null 2>&1
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +56,7 @@ jobs:
     - name: Commit to the repo
       run: |
         git config --global user.name "Simon Hyll"
-        git config --global user.email "github-stats[bot]@adaptive-simon.github.io"
+        git config --global user.email "hyllsimon@gmail.com"
         git add .
         # Force the build to succeed, even if no files were changed
         git commit -m 'Update generated files' || true
